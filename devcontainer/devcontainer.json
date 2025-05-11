@@ -1,0 +1,30 @@
+{
+  "name": "playwright-mcp",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [5000],
+  "postCreateCommand": "./run.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnSave": true,
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.linting.pylintArgs": [
+          "--disable=C0114", "--disable=C0115", "--disable=C0116"
+        ],
+        "terminal.integrated.commandsToSkipShell": [],
+        "terminal.integrated.sendKeybindingsToShell": true,
+        "terminal.integrated.allowChords": false,
+        "terminal.integrated.shellIntegration.enabled": true,
+        "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+        "extensions.ignoreRecommendations": false
+      },
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

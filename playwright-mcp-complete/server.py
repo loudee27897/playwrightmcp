@@ -47,9 +47,11 @@ def type_text():
 
 @app.route("/screenshot")
 def screenshot():
-    if not os.path.exists("screenshot.png") and not os.path.exists("clicked.png") and not os.path.exists("typed.png"):
+    image_path = "typed.png" if os.path.exists("typed.png") else \
+                 "clicked.png" if os.path.exists("clicked.png") else \
+                 "screenshot.png"
+    if not os.path.exists(image_path):
         return jsonify({"error": "No screenshot available"}), 404
-    image_path = "typed.png" if os.path.exists("typed.png") else "clicked.png" if os.path.exists("clicked.png") else "screenshot.png"
     return send_file(image_path, mimetype="image/png")
 
 if __name__ == "__main__":
